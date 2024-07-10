@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import ProfileInfo from "./ProfileInfo";
+
 import { Navigate, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
+import ProfileInfo from "./cards/ProfileInfo";
 const Navbar = ()=>{
     const [searchQuery , setSearchQuery] = useState("")
     const navigate = useNavigate()
