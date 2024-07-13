@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 //create account
-app.post("/create-account", async (req, res) => {
+app.post("/register", async (req, res) => {
   console.log(req.body);
   const { name, email, password } = req.body;
 
@@ -99,7 +99,7 @@ app.post("/login", async (req, res) => {
       error: false,
       email,
       accessToken,
-      message: "Registration Successful",
+      message: "Login Successfull Successful",
     });
   } else {
     return res
@@ -126,7 +126,7 @@ app.get("/getUser", authenticateToken, async (req, res) => {
 });
 
 //add notes
-app.post("/add-note", authenticateToken, async (req, res) => {
+app.post("/add", authenticateToken, async (req, res) => {
   const { title, content, tags } = req.body;
   const { user } = req.user;
 
@@ -159,7 +159,7 @@ app.post("/add-note", authenticateToken, async (req, res) => {
   }
 });
 
-app.put("/edit-note/:noteId", authenticateToken, async (req, res) => {
+app.put("/edit/:noteId", authenticateToken, async (req, res) => {
   const noteId = req.params.noteId;
   const { title, content, tags, isPinned } = req.body;
   const { user } = req.user;
@@ -253,6 +253,37 @@ app.put("/pin/:noteId", authenticateToken, async (req, res) => {
     return res.status(500).json({
       error: true,
       message: "Internal Server Error",
+    });
+  }
+});
+
+//search API
+
+app.get("/search", authenticateToken, async (req, res) => {
+  const { user } = req.user;
+  const { query } = req.query;
+
+  if (!query)
+    return res
+      .status(400)
+      .json({ error: true, message: "Search query is required" });
+  try {
+    const matchingNotes = await Note.find({
+      userId: user._id,
+      $or: [
+        { title: { $regex: new RegExp(query, "i") } },
+        { content: { $regex: new RegExp(query, "i") } },
+      ],
+    });
+    return res.json({
+      error: false,
+      notes: matchingNotes,
+      message: "Notes Retrieved successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: true,
+      message: "Could not Fetch the Data",
     });
   }
 });
