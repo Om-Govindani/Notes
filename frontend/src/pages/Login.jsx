@@ -45,31 +45,36 @@ const Login = ()=>{
     }
     return (
         <>
-            <Navbar />
-            <div className="flex items-center justify-center mt-28">
-                <div className="w-96 border rounded-2xl bg-white px-7 py-10">
-                    <form onSubmit={handleLogin}>
-                        <h4 className="text-2xl mb-7">Log-in</h4>
-                        <input 
-                        type="text" 
-                        placeholder="Enter Email" 
-                        className="input-box" 
-                        value={email} 
-                        onChange={(e)=>setEmail(e.target.value)}
-                        />
-                        <PasswordInput value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-                        <button type="submit" className="btn-primary">Take to Space</button>
-                        <p className="text-sm text-center mt-4">
-                            Not Registered ?{" "}
-                            <Link to="/Signup" className="font-medium text-primary underline">
-                            Create an Account
-                            </Link>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </>
+      <Navbar />
+      <div className="flex items-center justify-center mt-28 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md border rounded-2xl bg-white px-7 py-10">
+          <form onSubmit={handleLogin}>
+            <h4 className="text-2xl text-center mb-7">Log-in</h4>
+            <input
+              type="text"
+              placeholder="Enter Email"
+              className="input-box w-full"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <PasswordInput
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
+            <button type="submit" className="btn-primary w-full">
+              Take to Space
+            </button>
+            <p className="text-sm text-center mt-4">
+              Not Registered ?{" "}
+              <Link to="/Signup" className="font-medium text-primary underline">
+                Create an Account
+              </Link>
+            </p>
+          </form>
+        </div>
+      </div>
+    </>
     )
 }
 
