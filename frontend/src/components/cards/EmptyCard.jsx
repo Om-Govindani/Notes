@@ -24,9 +24,9 @@ const EmptyCard = ({ isSearch }) => {
                     "Oops, we can't find the matching note."
                 ) : (
                     <>
-                        Start creating your first note!<br />
-                        Click the 'Add' button to jot down your thoughts, ideas, and reminders.<br />
-                        Let's get started!
+                        <p>Start creating your first note!</p>
+                        <p>Click the 'Add' button to jot down your thoughts, ideas, and reminders.</p>
+                        <p>Let's get started!</p>
                     </>
                 )}
             </p>
