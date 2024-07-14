@@ -63,7 +63,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
                 </div>
             ) : (
                 <div className="flex items-center gap-4">
-                    <MdSearch className="text-xl cursor-pointer" onClick={toggleSearchBar} />
+                    userInfo && <MdSearch className="text-xl cursor-pointer" onClick={toggleSearchBar} />
                     {userInfo && (
                         <ProfileInfo userInfo={userInfo} onLogout={onLogout} />
                     )}
