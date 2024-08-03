@@ -161,7 +161,7 @@ const Home = () => {
           },
         }}
         contentLabel="Add/Edit Note"
-        className="w-full max-w-md bg-white rounded-md mx-auto mt-14 p-5 overflow-y-auto sm:mx-4 md:mx-6 lg:mx-8"
+        className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-y-auto"
       >
         <div>
           <AddEditNote
