@@ -65,7 +65,7 @@ const AddEditNote = ({ getAllNotes, noteData, type, onClose, ShowToastMessage })
     };
 
     return (
-        <div className="relative p-4 sm:p-6 lg:p-8">
+        <div className="relative ">
             <button
                 className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50"
                 onClick={onClose}
