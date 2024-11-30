@@ -1,7 +1,18 @@
 import React from "react";
 import { MdOutlinePushPin, MdCreate, MdDelete } from "react-icons/md";
 
-const NoteCard = ({ title, date, content, tags, isPinned, onEdit, onDelete, onPinNote, onPinGroupNote }) => {
+const NoteCardGroup = ({ 
+    title, 
+    date, 
+    content, 
+    tags, 
+    isPinned, 
+    onEdit, 
+    onDelete, 
+    onPinGroupNote, 
+    lastUpdatedBy, 
+    updatedAt 
+}) => {
     return (
         <div
             className="bg-white border border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer"
@@ -20,7 +31,6 @@ const NoteCard = ({ title, date, content, tags, isPinned, onEdit, onDelete, onPi
                     }`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onPinNote();
                         onPinGroupNote();
                     }}
                 />
@@ -56,8 +66,18 @@ const NoteCard = ({ title, date, content, tags, isPinned, onEdit, onDelete, onPi
                     />
                 </div>
             </div>
+            {lastUpdatedBy && (
+                <div className="text-sm text-gray-600 mt-4">
+                    Last updated by: <span className="font-medium">{lastUpdatedBy}</span>
+                </div>
+            )}
+            {updatedAt && ( 
+                <div className="text-sm text-gray-500 mt-2">
+                    Updated At: <span className="font-medium">{updatedAt}</span>
+                </div>
+            )}
         </div>
     );
 };
 
-export default NoteCard;
+export default NoteCardGroup;
